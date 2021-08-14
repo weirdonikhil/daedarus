@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+  {% block content %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 text-gray-800">Projects</h1>
+                    {% if message %}
+                    <div class="alert alert-danger">
+                      <center>{{message}}</center>
+                    </div> 
+                    {% endif %}
+                    <a href="/add-project" style="margin-bottom: 5%;" class="btn mb-10 btn-primary btn-icon-split shadow">
+                                        <span class="icon text-white-500">
+                                            <i class="fas fa-add">+</i>
+                                        </span>
+                                        <span class="text">Add a New Project</span>
+                    </a>
+                    {% for project in projects %}
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action shadow mb-4 flex-column align-items-start ">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">{{project.name}}</h5>
+                            <small>{{project.id}}</small>
+                          </div>
+                          <h6 class="mb-1">{{project.description}}</h4>
+                          <h6>{{project.members}}</h3>
+                        </a>
+                    </div>
+                     {% endfor %}
+{% endblock %}

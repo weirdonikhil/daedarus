@@ -1,0 +1,65 @@
+
+{% extends "base.html" %}
+              {% block content %}
+
+              {% if sweetalert==True %}
+              <body onload="doMyAlerts('Gift Card Issued Successfully','redeeming link => {{link}}','success');"></body>
+              {% endif %}
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Reward Your Best Employee</h1>
+                    </div>
+
+                        <!-- Pending Requests Card Example -->
+                    <!-- Basic Card Example -->
+                    <form action="/give-reward" method="POST">
+                    <div class="card shadow mb-4 mr-20">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-center text-primary">Reward the HardWork</h6>
+                        </div>
+                        <div class="card-body" style="margin: auto;">
+                        <center>
+                            <div >
+                                <p>Total gift card value: <input type="number" name="reward_value" class="form-control w-0" placeholder="Enter the amount of reward " aria-label="Reward Value" aria-describedby="basic-addon2"></p>
+                                <hr style="color: red;
+                                border-width: thick;
+                                border-color: rebeccapurple;">
+
+                            </div>
+                        </center>
+                            <div class="input-group  mb-3 " style="width: 230px;">
+
+                                <input type="text" name="employee_id" class="form-control w-0" placeholder="Enter Emp_Id " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                  <span class="input-group-text" id="basic-addon3"> Emp_Id</span>
+                                </div>
+
+                              </div>
+                        </div>
+                    </div>
+                    <center>
+                        <button
+                          href="#"
+                          type="submit"
+                          class="btn btn-primary btn-icon-split mt-4 text-center"
+                          data-toggle="modal"
+                          data-target="#projectModal"
+                        >
+                          <span class="icon text-white-500">
+                            <i class="fas fa-arrow-right"></i>
+                          </span>
+                          <span class="text"> Issue Gift Card</span>
+                        </button>
+                    </center>
+                    </form>
+                </div>
+
+                
+
+              {% endblock %} 
+                <!-- /.container-fluid -->
+
+ 

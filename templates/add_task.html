@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+          {% block content %}
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-4 text-black-100">Add a New Task</h1>
+            <form class="w-75" action="/add-task" method="POST">
+              <label
+                for="project_name"
+                class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+                >Task Name</label
+              >
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control form-control-lg text-sm"
+                  id="project_name"
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  name="task_name"
+                />
+              </div>
+
+              <label
+                for="project_name"
+                class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+                >Task ID
+              </label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control form-control-lg text-sm"
+                  id="project_name"
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  name="task_id"
+                />
+              </div>
+              <label
+                for="project_name"
+                class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+                >Project ID
+              </label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control form-control-lg text-sm"
+                  id="project_name"
+                  aria-label="Search"
+                  aria-describedby="basic-addon2"
+                  name="task_project_id"
+                />
+              </div>
+              <label
+                for="project_name"
+                class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+                >Task Instruction/Note
+              </label>
+              <div class="input-group">
+                <textarea
+                  class="form-control"
+                  id="exampleFormControlTextarea3"
+                  rows="3"
+                  name="task_description"
+                ></textarea>
+              </div>
+
+              <center>
+                <button
+                  href="#"
+                  class="btn btn-primary btn-icon-split mt-4 text-center"
+                  data-toggle="modal"
+                  data-target="#projectModal"
+                  type="submit"
+                >
+                  <span class="icon text-white-500">
+                    <i class="fas fa-add">+</i>
+                  </span>
+                  <span class="text"> Create Task</span>
+                </button>
+              </center>
+            </form>
+          </div>
+         {% endblock %}

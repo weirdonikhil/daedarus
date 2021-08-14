@@ -1,0 +1,27 @@
+{% extends "base_member.html" %}
+  {% block content %}
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 text-gray-800">Projects</h1>
+                    {% if message %}
+                    <div class="alert alert-danger">
+                      <center>{{message}}</center>
+                    </div> 
+                    {% endif %}
+                    {% for project in projects %}
+                    <div class="list-group">
+                        <a href="#" class="list-group-item list-group-item-action shadow mb-4 flex-column align-items-start ">
+                          <div class="d-flex w-100 justify-content-between">
+                            <h3 class="mb-1">{{project.name}}</h5>
+                            <small>{{project.id}}</small>
+                          </div>
+                          <h6 class="mb-1">{{project.description}}</h4>
+                          <h6>{{project.members}}</h3>
+                        </a>
+                    </div>
+                     {% endfor %}
+{% endblock %}

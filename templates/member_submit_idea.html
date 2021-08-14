@@ -1,0 +1,79 @@
+
+{% extends "base_member.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-black-100">Submit Idea</h1>
+    <form class="w-75" action="/idea" method="POST">
+
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Idea Tagline
+      </label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          aria-label="Search"
+          name="idea_tagline"
+          aria-describedby="basic-addon2"
+        />
+      </div>
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Short Description
+      </label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          aria-label="Search"
+          name="description"
+          aria-describedby="basic-addon2"
+        />
+      </div>
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Market Size, Idea Validation and Prototype Link
+      </label>
+      <div class="input-group">
+        <textarea
+          class="form-control"
+          id="exampleFormControlTextarea3"
+          name="business_model"
+          rows="5"
+        ></textarea>
+      </div>
+      <div class="form-group mt-4">
+        <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Upload Business Model
+      </label>
+        <input type="url" name="business_model_link" class="form-control" id="exampleFormControlFile1" placeholder="Upload the Google Drive link to the Business Model ">
+      </div>
+
+      <center>
+        <button
+          href="#"
+          class="btn btn-primary btn-icon-split mt-4 text-center"
+          data-toggle="modal"
+          type="submit"
+          data-target="#projectModal"
+        >
+          <span class="icon text-white-500">
+            <i class="fas fa-add">+</i>
+          </span>
+          <span class="text"> Submit Idea</span>
+        </button>
+      </center>
+    </form>
+  </div>
+
+{% endblock %}

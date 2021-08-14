@@ -1,0 +1,161 @@
+{% extends "base_member.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Submissions</h1>
+    <p class="mb-4">
+      All recent submissions sorted accordingly.
+      
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Submissions Made till Date
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Project Name</th>
+                <th>Task Name</th>
+                <th>Task Id</th>
+                <th>Submission Date</th>
+                <th>Status</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Project Name</th>
+                <th>Task Name</th>
+                <th>Task Id</th>
+                <th>Submission Date</th>
+                <th>Status</th>
+                <th>Rating</th>
+              </tr>
+            </tfoot>
+            {% if message %}
+            <div class="alert alert-danger">
+              <center>{{message}}</center>
+            </div> 
+            {% else %}
+            <tbody>
+              {% for task in tasks %}
+              <tr>
+                <td>{{task.project_name}}</td>
+                <td>{{task.task_name}}</td>
+                <td>{{task.task_id}}</td>
+                <td>{{task.date}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.ratings}}</td>
+              </tr>
+               {% endfor %}
+            </tbody>
+            {% endif %}
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+ 
+ 
+ 
+ <!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-black-100">Submit task</h1>
+    <form class="w-75" action="/tasks" method="POST">
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Task Name</label
+      >
+      <div class="input-group">
+        <input
+          type="text"
+          name="task_name"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          aria-label="Search"
+          aria-describedby="basic-addon2"
+        />
+      </div>
+
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Task ID
+      </label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          name="task_id"
+          aria-label="Search"
+          aria-describedby="basic-addon2"
+          required
+        />
+      </div>
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Project ID
+      </label>
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          name="project_id"
+          aria-label="Search"
+          aria-describedby="basic-addon2"
+          required
+        />
+      </div>
+      <label
+        for="project_name"
+        class="mb-2 ml-1 mt-2 font-weight-bold text-lg"
+        >Project Name</label
+      >
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control form-control-lg text-sm"
+          id="project_name"
+          name="project_name"
+          aria-label="Search"
+          aria-describedby="basic-addon2"
+          required
+        />
+      </div>
+
+      <center>
+        <button
+          
+          class="btn btn-primary btn-icon-split mt-4 text-center"
+          
+          type="submit"
+         
+        >
+          <span class="icon text-white-500">
+            <i class="fas fa-add">+</i>
+          </span>
+          <span class="text"> Submit Task</span>
+        </button>
+      </center>
+    </form>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js" crossorigin="anonymous"></script>
+  <meta http-equiv="refresh" content="60; URL='http://xeta.herokuapp.com/tasks'" />
+</head>
+<title>Sit Ups Counter | Xeta </title>
+<!--<link rel="icon" href="../logo.png" type="image/png"> -->
+<style>
+  @font-face {
+    font-family: futura;
+    src: url(../after-play/futura.otf);
+  }
+  body{
+  background-color: black;
+  }
+</style>
+<body>   
+  
+  <div class="container">
+    <video class="input_video" style="display: none;"></video>
+    <canvas class="output_canvas" width="1500px" height="600px"></canvas>
+  </div>
+ <div>
+   <p style="font-size: xx-large; font-weight: bolder; color: darkgoldenrod;">Sit Ups Counter : 
+      <span style="font-size: xx-large; font-weight: bolder; color: darkgoldenrod;" id="situpscounter">0</span>
+   </p>
+  </div>
+  <div>
+      <p class="yLeft"></p>
+      <p class="yRight"></p>
+  </div>
+
+</body>
+<script type="module">
+    
+const videoElement = document.getElementsByClassName('input_video')[0];
+const canvasElement = document.getElementsByClassName('output_canvas')[0];
+const canvasCtx = canvasElement.getContext('2d');
+
+function onResults(results) {
+    canvasCtx.save();
+    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+    canvasCtx.drawImage(
+        results.image, 0, 0, canvasElement.width, canvasElement.height);
+    drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS,
+                    {color: '#00FF00', lineWidth: 4});
+    drawLandmarks(canvasCtx, results.poseLandmarks,
+                {color: '#FF0000', lineWidth: 2});
+    canvasCtx.restore();
+    //console.log(results.poseLandmarks['0'].y);
+    var c=0;
+    if (results.poseLandmarks['0'].y < 1.0039929151535034 && results.poseLandmarks['0'].y > 0.9845783019065857)
+    {
+      c=0;
+    }
+    if(results.poseLandmarks['0'].y < 1.0039929151535034 && results.poseLandmarks['0'].y > 0.9845783019065857 && c==0)
+    {
+      var count=parseInt(document.getElementById('situpscounter').innerHTML);
+      count++;
+      c=1;
+    }
+    else
+    {
+      var count=parseInt(document.getElementById('situpscounter').innerHTML);
+    }
+    document.getElementById('situpscounter').innerHTML = count;     
+
+}
+
+const pose = new Pose({locateFile: (file) => {
+    return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
+}});
+pose.setOptions({
+    modelComplexity: 1,
+    smoothLandmarks: true,
+    minDetectionConfidence: 0.5,
+    minTrackingConfidence: 0.5
+});
+pose.onResults(onResults);
+
+const camera = new Camera(videoElement, {
+    onFrame: async () => {
+    await pose.send({image: videoElement});
+    },
+    width: 1280,
+    height: 720
+});
+camera.start();
+
+</script>
+</html>

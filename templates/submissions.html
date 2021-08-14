@@ -1,0 +1,78 @@
+   {% extends "base.html" %}
+          {% block content %}
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Submissions</h1>
+            <p class="mb-4">
+              All recent submissions sorted accordingly.
+              
+            </p>
+
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+              <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                  Submissions by members
+                </h6>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                  {% if message %}
+                    <div class="alert alert-danger">
+                      <center>{{message}}</center>
+                    </div> 
+                    {% endif %}
+                    <thead>
+                      <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Project Name</th>
+                        <th>Task Id</th>
+                        <th>Submission Date</th>
+                        <th>Status</th>
+                        <th>Rating</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Project Name</th>
+                        <th>Task Id</th>
+                        <th>Submission Date</th>
+                        <th>Status</th>
+                        <th>Rating</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      {% for task in tasks %}
+                      <tr>
+                        <td>{{task.employee_id}}</td>
+                        <td>{{task.name}}</td>
+                        <td>{{task.project_name}}</td>
+                        <td>{{task.task_id}}</td>
+                        <td>{{task.submission_date}}</td>
+                        <td>{{task.status}}</td>
+                        {% if task.ratings =='/5' %}
+                          <td><a href="/rate-submissions">Rate Now</a></td>
+                        {% else %}
+                        <td>{{task.ratings}}</td>
+                        {% endif %}
+                      {% endfor %}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+ 
+            {% endblock %}
